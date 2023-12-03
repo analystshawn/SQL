@@ -27,4 +27,4 @@ values
 select f.name,fs.who,fh.type
 from famous_people f
 inner join famous_spouses fs, famous_peoples_homes fh
-on f.name_id=fs.name_id=fh.name_id;
+on f.name_id=fs.name_id=fh.name_id;       We ran an INNER JOIN on 3 tables.
