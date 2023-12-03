@@ -1,0 +1,30 @@
+This code features 3 tables that are related to one another using an INNER JOIN function.
+
+/* Create table about the people and what they do here */
+create table famous_people (name_id integer, name text, industry text, country_of_origin text, net_worth integer);
+insert into famous_people (name_id, name, industry, country_of_origin, net_worth)
+values
+(1, 'Megan Beer', 'Movies', 'USA', 18000000),
+(2, 'Sexyy Red', 'Music', 'USA', 400000),
+(3, 'Oprah Winfrey', 'Media', 'USA', 2800000000),
+(4, 'Hilary Rodham', 'Politics', 'USA', 32015004), (5, 'Alexandria Ocasio-Cortez', 'Politics', 'USA', 1300000);
+create table famous_spouses (name_id integer, who text,country_of_origin text);
+insert into famous_spouses (name_id, who, country_of_origin)
+values
+(1, 'Dan Barson', 'USA'),
+(2, 'null', 'null'),
+(3, 'Stedman Graham', 'USA'),
+(4, 'Bill Clinton', 'USA'),
+(5, 'Riley Roberts', 'USA');
+create table famous_peoples_homes (name_id integer, belonging_to text, type text);
+insert into famous_peoples_homes 
+values
+(1, 'Megan Beer', 'Condo'),
+(2, 'Sexyy Red', 'Condo'),
+(3, 'Oprah Winfrey', 'Condo'),
+(4, 'Hilary Rodham', 'Condo'),
+(5, 'Alexandria Ocasio-Cortez', 'Condo');
+select f.name,fs.who,fh.type
+from famous_people f
+inner join famous_spouses fs, famous_peoples_homes fh
+on f.name_id=fs.name_id=fh.name_id;
