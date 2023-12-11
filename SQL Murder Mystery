@@ -1,0 +1,53 @@
+select * from crime_scene_report
+where date = '20180115' and type = 'murder' and city = 'SQL City'; BRINGS UP THE CRIME SCENE REPORT
+
+Security footage shows that there were 2 witnesses. The first witness lives at the last house on "Northwestern Dr". The second witness, named Annabel, lives somewhere on "Franklin Ave".
+Morty Schapiro
+Id 14887
+Morty’s ssn: 111564949
+Morty’s license id: 118009
+Morty’s address: 4919 Northwestern Dr
+Annabel Miller
+Id 16371
+Annabel’s ssn: 318771143
+Annabel’s license id: 490173
+Annabel’s address: 103 Franklin Ave
+
+select * from interview
+where person_id = '14887'; MARTY SCHAPIRO’S INTERVIEW
+I heard a gunshot and then saw a man run out. He had a "Get Fit Now Gym" bag. The membership number on the bag started with "48Z". Only gold members have those bags. The man got into a car with a plate that included "H42W".
+select * from interview
+where person_id = '16371'; ANNABEL MILLER’S INTERVIEW
+I saw the murder happen, and I recognized the killer from my gym when I was working out last week on January the 9th.
+
+SELECT get_fit_now_check_in.check_in_date, get_fit_now_member.membership_status, get_fit_now_member.name, get_fit_now_member.id
+FROM get_fit_now_check_in JOIN get_fit_now_member
+ON get_fit_now_check_in.membership_id = get_fit_now_member.id
+where check_in_date = '20180109' and membership_status = 'gold'; LIST OF GOLD MEMBERS THAT CHECKED IN ON 01.09.2018
+
+Sarita Bartosh (id = 55662, license_id.= 556062), Carmen Dimick (id = 92736, license_id=890722)
+
+We know it’s either Joe Germuska (person ID = 28819, license_id=173289), or Jeremy Bowers (person ID = 67318, license_id=423327) because their gym ID’s include 48Z per Marty’s Interview
+
+Id 423327 returns a license attached to a car with the plate “0H42W2” which matches the plate described by Marty Schapiro. The killer is Jeremy Bowers.
+
+select * from interview
+where person_id = 67318; 
+
+I was hired by a woman with a lot of money. I don't know her name but I know she's around 5'5" (65") or 5'7" (67"). She has red hair and she drives a Tesla Model S. I know that she attended the SQL Symphony Concert 3 times in December 2017.
+
+select person.name, person.id
+from person JOIN drivers_license
+on person.license_id = drivers_license.id
+where car_make = 'Tesla' and car_model = 'Model S' and hair_color = 'red'; We created a list of all the red-haired Tesla Model S drivers.
+
+name	id
+Cletus Zoeller	57410
+Red Korb	78881
+Regina George	90700
+Miranda Priestly	99716
+
+select * from facebook_event_checkin
+where person_id = '57410' or person_id = '78881' or person_id = '90700' or person_id = '99716'; we ran this command to see which id attended ‘SQL Symphony Concert’ 3 times. 
+
+The killer is Miranda Priestly.
